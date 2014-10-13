@@ -7,6 +7,10 @@
             test("A very simple test of no value", function () {
                 ok(1 == "1", "Test passed! Number one is equal to string one");
             });
+            test("is_holiday", function () {
+                HOLIDAYS = ["12/25/2014", "02/26/2015"];
+                equals(is_holiday("12/25/2014", HOLIDAYS), true);
+            });
         </script>
     </head>
     <body>
