@@ -4,14 +4,14 @@ function date_plus_business_days(date_start, num_days_business, holidays) {
     "use strict";
     var ONE_DAY, current_date, num_days_so_far;
     ONE_DAY = 24 * 60 * 60 * 1000;
-    current_date = date_start + ONE_DAY;
+    current_date = new Date(date_start.getTime() + ONE_DAY);
     num_days_so_far = 0;
     while (num_days_so_far < num_days_business) {
         if (is_business_day(current_date, holidays)) {
             ++num_days_so_far;
         }
         if (num_days_so_far < num_days_business) {
-            current_date += ONE_DAY;
+            current_date = new Date(current_date.getTime() + ONE_DAY);
         }
     }
     return current_date;
