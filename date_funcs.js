@@ -19,12 +19,13 @@ function is_holiday(date, holidays, timezone) {
 
 function is_business_day(date, holidays) {
     "use strict";
+    var dateIgnoreTime;
     if (date.getDay() === 0 || date.getDay() === 6) {
         // ASSERT: day is Sunday or Saturday
         return false;
     }
     // Make a copy of {date} and set it to midnight
-    var dateIgnoreTime = jQuery.extend(true, {}, date);
+    var dateIgnoreTime = new Date(date.getTime());
     dateIgnoreTime.setHours(0, 0, 0, 0);
     if (is_holiday(dateIgnoreTime, holidays)) {
         return false;
