@@ -1,6 +1,8 @@
 // Note: jquery is required, e.g., http://code.jquery.com/jquery-1.8.3.js
 
 function is_holiday(date, holidays, timezone) {
+    // Note that {date} is a Date object, but {holidays} is an array of strings,
+    // like ["12/25/2014"]
     "use strict";
     var i, holiday;
     if (timezone === undefined) {
@@ -8,7 +10,7 @@ function is_holiday(date, holidays, timezone) {
     }
     for (i = 0; i < holidays.length; i += 1) {
         holiday = new Date(holidays[i] + " 00:00:00 " + timezone);
-        if (date === holiday) {
+        if (date.getTime() === holiday.getTime()) {
             return true;
         }
     }
