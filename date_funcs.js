@@ -4,7 +4,7 @@ function is_holiday(date, holidays, timezone) {
     // Note that {date} is a Date object, but {holidays} is an array of strings,
     // like ["12/25/2014"]
     "use strict";
-    var i, holiday;
+    var date_no_time, holiday, i;
     if (timezone === undefined) {
         timezone = 'PST';
     }
