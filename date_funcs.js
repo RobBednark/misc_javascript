@@ -7,7 +7,7 @@ function date_plus_business_days(date_start, num_days_business, holidays) {
     current_date = date_start + ONE_DAY;
     num_days_so_far = 0;
     while (num_days_so_far < num_days_business) {
-        if is_business_day(current_date, holidays) {
+        if (is_business_day(current_date, holidays)) {
             ++num_days_so_far;
         }
         if (num_days_so_far < num_days_business) {
