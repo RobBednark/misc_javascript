@@ -13,7 +13,7 @@
                 equal(is_holiday(new Date(Date.parse("12/24/2014")), HOLIDAYS), false, "12/24");
                 equal(is_holiday(new Date(Date.parse("12/26/2014")), HOLIDAYS), false, "12/26");
                 equal(is_holiday(new Date(Date.parse("02/26/2015")), HOLIDAYS), true, "2/26");
-                equal(is_holiday(new Date(Date.parse("02/26/2014")), HOLIDAYS), true, "2/26/2014");
+                equal(is_holiday(new Date(Date.parse("02/26/2014")), HOLIDAYS), false, "2/26/2014");
             });
         </script>
     </head>
