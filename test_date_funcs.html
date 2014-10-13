@@ -21,6 +21,11 @@
                 equal(is_business_day(new Date(Date.parse("10/18/2015")), HOLIDAYS), false, "10/18 Sat");
                 equal(is_business_day(new Date(Date.parse("10/14/2014")), HOLIDAYS), false, "10/14 Tue Holiday");
             });
+            test("date_plus_business_days", function () {
+                HOLIDAYS = ["10-13-2014", "11-11-2014", "11-27-2014", "12-25-2014", "01-01-2015", "01-19-2015", "02-16-2015", "05-25-2015", "07-03-2015"];
+                result = date_plus_business_days(new Date(Date.parse("10/12/2014")), 1, HOLIDAYS);
+                equal(result.getTime(), new Date(Date.parse("10/13/2014")).getTime(), "10/12 Sun + 1")
+            });
         </script>
     </head>
     <body>
