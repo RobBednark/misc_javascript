@@ -31,7 +31,7 @@
                 equal(result.getTime(), new Date(Date.parse("10/27/2014")).getTime(), "10/12 Sun + 10 = 10/27 Mon (Mon 10/13 is a holiday)")
 
                 result = date_plus_business_days(new Date(Date.parse("12/23/2014")), 10, HOLIDAYS);
-                equal(result.getTime(), new Date(Date.parse("01/07/2015")).getTime(), "12/23 + 10 = 01/07")
+                equal(result.getTime(), new Date(Date.parse("01/08/2015")).getTime(), "12/23 Tue + 10 = 01/08 Thu")
             });
         </script>
     </head>
