@@ -25,7 +25,7 @@ function is_business_day(date, holidays) {
     }
     // Make a copy of {date} and set it to midnight
     var dateIgnoreTime = jQuery.extend(true, {}, date);
-    dateIgnoreTime = date.setHours(0, 0, 0, 0);
+    dateIgnoreTime.setHours(0, 0, 0, 0);
     if (is_holiday(dateIgnoreTime, holidays)) {
         return false;
     }
