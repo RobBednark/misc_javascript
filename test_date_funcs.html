@@ -4,9 +4,6 @@
         <script type="text/javascript" src="http://code.jquery.com/qunit/qunit-1.15.0.js"></script>
         <script type="text/javascript" src="https://rawgit.com/RobBednark/misc_javascript/master/date_funcs.js"></script>
         <script>
-            test("A very simple test of no value", function () {
-                ok(1 == "1", "Test passed! Number one is equal to string one");
-            });
             test("is_holiday", function () {
                 HOLIDAYS = ["12/25/2014", "02/26/2015"];
                 equal(is_holiday(new Date(Date.parse("12/25/2014")), HOLIDAYS), true, "12/25");
@@ -14,6 +11,14 @@
                 equal(is_holiday(new Date(Date.parse("12/26/2014")), HOLIDAYS), false, "12/26");
                 equal(is_holiday(new Date(Date.parse("02/26/2015")), HOLIDAYS), true, "2/26");
                 equal(is_holiday(new Date(Date.parse("02/26/2014")), HOLIDAYS), false, "2/26/2014");
+            });
+            test("is_business_day", function () {
+                HOLIDAYS = ["12/25/2014", "02/26/2015", "10/14/2014"];
+                equal(is_business_day(new Date(Date.parse("10/12/2014")), HOLIDAYS), false, "10/12 Sun");
+                equal(is_business_day(new Date(Date.parse("10/13/2014")), HOLIDAYS), true, "10/13 Mon");
+                equal(is_business_day(new Date(Date.parse("10/17/2014")), HOLIDAYS), true, "10/17 Fri");
+                equal(is_business_day(new Date(Date.parse("10/18/2015")), HOLIDAYS), false, "10/18 Sat");
+                equal(is_business_day(new Date(Date.parse("10/14/2014")), HOLIDAYS), false, "10/14 Tue Holiday");
             });
         </script>
     </head>
