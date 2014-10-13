@@ -8,9 +8,12 @@ function is_holiday(date, holidays, timezone) {
     if (timezone === undefined) {
         timezone = 'PST';
     }
+    date_no_time = new Date(date.getTime());
+    date_no_time.setHours(0, 0, 0, 0);
     for (i = 0; i < holidays.length; i += 1) {
-        holiday = new Date(holidays[i] + " 00:00:00 " + timezone);
-        if (date.getTime() === holiday.getTime()) {
+        holiday = new Date(Date.parse(holidays[i]));
+        holiday.setHours(0, 0, 0, 0);
+        if (date_no_time.getTime() === holiday.getTime()) {
             return true;
         }
     }
@@ -19,15 +22,11 @@ function is_holiday(date, holidays, timezone) {
 
 function is_business_day(date, holidays) {
     "use strict";
-    var dateIgnoreTime;
     if (date.getDay() === 0 || date.getDay() === 6) {
         // ASSERT: day is Sunday or Saturday
         return false;
     }
-    // Make a copy of {date} and set it to midnight
-    var dateIgnoreTime = new Date(date.getTime());
-    dateIgnoreTime.setHours(0, 0, 0, 0);
-    if (is_holiday(dateIgnoreTime, holidays)) {
+    if (is_holiday(date, holidays)) {
         return false;
     }
     return true;
